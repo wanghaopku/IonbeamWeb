@@ -1,27 +1,97 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>纳米材料与器件辐照效应</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<html  xmlns="http://www.w3.org/1999/xhtml" lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<title>Frame</title>
-</head>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+  </head>
 
-<body>
+  <script src="js/jquery-3.2.0.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <body>
+
+    <div class="container-fluid" style="background-color:#8f000b">
+        <img src="img/logo.png"></img>
+    </div>
+
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="navbar-inner">
+          <div class="nav-collapse collapse">
+            <ul class="nav pagenav">
+              <li id="HOME"> <a href="index.php?pageName=HOME">首页</a> </li>
+              <li id="TUTOR"> <a href="index.php?pageName=TUTOR">导师介绍</a> </li>
+              <li id="RESEARCH"> <a href="index.php?pageName=RESEARCH">科研领域</a> </li>
+              <li id="MEMBER"> <a href="index.php?pageName=MEMBER">人员构成</a> </li>
+              <li id="NEWS"> <a href="index.php?pageName=NEWS">组内动态</a> </li>
+              <li id="CONTACT"> <a href="index.php?pageName=CONTACT">联系我们</a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
+    <div class="container-fluid" style="padding:0px">
+      <?php
+		$pageName="HOME";
+		if($_GET["pageName"]!=""){
+			$pageName=$_GET["pageName"];
+		}
+		$conFile=file($pageName . "/content.txt");
+		$conList=array();
+		foreach ($conFile as $line){
+			list($title,$file)=explode("/",$line);
+			$file=trim($file);
+			$conList[$title]=$file;
+		}
+		reset($conList);
+		$partName=current($conList);
+		if(strlen($_GET['partName'])>0){
+			$partName=$_GET['partName'];
+		}
 
+		if (count($conList)>1){
+			printf('<div class="row-fluid">');
+			printf('<div class="span3" style="padding:20px"> <div class="well sidebar-nav"> <ul class="nav nav-list">');
+			while($key=key($conList)){
+				if($partName==$conList[$key]){
+					printf('<li class="active"><a href="%s">%s</a></li>', "index.php?pageName=" . $pageName . "&partName=" . $conList[$key], $key);
+				}else{
+					printf('<li><a href="%s">%s</a></li>', "index.php?pageName=" . $pageName . "&partName=" . $conList[$key], $key);
+				}
+				next($conList);
+			}
+			printf('</ul> </div> </div>');
 
+			printf('<div class="span9" style="padding-top:20px;">');
+			require($pageName . "/" . $partName);
+			printf('</div>');
 
+			printf('</div>');
+		}else{
+			require($pageName . "/" . $partName);
+		}
 
-
-
-
-	<script src="js/jquery-3.2.0.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-</body>
-
+		printf('<script type="text/javascript"> $(".pagenav>li").removeClass("active"); $("#%s").addClass("active"); </script>', $pageName);
+      ?>
+    </div>
+ 
+    <div class="container-fluid text-center" style="padding:0px;color:#fff;background-color:#000000; position:static; bottom:0px;">
+		地址：北京市成府路201号 | 邮编：100871 | 邮箱：jmxue@pku.edu.cn | 电话：010-62758494
+    </div>
+ </body>
 </html>
+
