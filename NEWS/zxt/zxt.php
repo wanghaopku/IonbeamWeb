@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>TRIM3D Help</title>
+</head>
+
+<body align="center">
+<font size="4">
+<img src="NEWS/zxt/logoTitle_noborder.png"></img><br />
+<br>
+<b>TRIM 3D</b><br>
+TRIM 3D is a 3D version of the TRIM, which is a Monte-Carlo calculation program to follow the ion into the target, making detailed calculations of the energy transferred to every target atom collision. The calculation code is based on the TRIM codes in 1985. It can calculate any shape target materials and give the details of the collision and the final atom distribution. <br />
+<img src="NEWS/zxt/mainwindow.png"></img><br>
+<br/>
+<br/>
+<b>Structure</b><br>
+It only accepts the 3D file in *.obj, which can be get from any CAD or 3D model software(like Maya, blender, 3DMax). The structure file is in unit A and every structure must be a convex polyhedron. A complex structure must be divided into several convex polyhedrons. The number of structures is not limited.<br>
+<img src="NEWS/zxt/structure.png"></img><br>
+<br>
+<br>
+<b>Input file</b><br>
+The input file has an end name *.t3d. It records the structures and ions informations. The TRIM 3D uses it to perform calculation. It is just a text file and the format is as following. Every item in the input file is shown in the main window.<br>
+<img src="NEWS/zxt/input.png"></img><br>
+<br>
+<br>
+<b>Color Dialog</b><br>
+This dialog can set the color setting in the display window. It can involve expressions to select objects and atoms.<br>
+Tips: INCIDENT=0, RECOIL=1, VACANCY=3, SPUTTER=4<br>
+<img src="NEWS/zxt/color.png"></img><br>
+<br>
+<br>
+<b>Plot Dialog</b><br>
+Plot the atom distribution in the selected area(the red area). Like the color dialog it can also include expression.<br>
+Tips: INCIDENT=0, RECOIL=1, VACANCY=3, SPUTTER=4<br>
+Plot Type: 0:column 1:line 2:point <br>
+<img src="NEWS/zxt/plotwindow.png"></img><br>
+<br>
+<br>
+<b>Export Data</b><br>
+The export data is in format *.xyz and it can be directly imported into other atom model software(like VMD). The file is a text file as following.<br>
+<img src="NEWS/zxt/export.png"></img><br>
+<br>
+<br>
+<b>Platform</b><br>
+It is based on the QT5.6 and OpenGL. Windows,Linux,Mac,Android,iOS are all supported.<br>
+<img src="NEWS/zxt/linux.png"></img><img src="NEWS/zxt/windows.png"></img><img src="NEWS/zxt/macosx.png"></img><img src="NEWS/zxt/android.png"></img><br>
+<br>
+<br>
+<b>Developer</b><br>
+Zhang Xitong<br>
+xitongsys@gmail.com zxt@pku.edu.cn<br>
+Peking University<br>
+<br>
+<br>
+
+
+
+
+</font>
+
+</body>
+
+
+</html>
