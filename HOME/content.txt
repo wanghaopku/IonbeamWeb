@@ -1,1 +1,1 @@
-首页/home.php
+首页|home.php

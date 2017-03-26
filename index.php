@@ -47,46 +47,57 @@
     <div class="container-fluid" style="padding:0px">
       <?php
 		$pageName="HOME";
-		if($_GET["pageName"]!=""){
-			$pageName=$_GET["pageName"];
-		}
-		$conFile=file($pageName . "/content.txt");
-		$conList=array();
-		foreach ($conFile as $line){
-			list($title,$file)=explode("/",$line);
-			$file=trim($file);
-			$conList[$title]=$file;
-		}
-		reset($conList);
-		$partName=current($conList);
+		$partName="";
 		if(strlen($_GET['partName'])>0){
 			$partName=$_GET['partName'];
 		}
-
-		if (count($conList)>1){
-			printf('<div class="row-fluid">');
-			printf('<div class="span3" style="padding:20px"> <div class="well sidebar-nav"> <ul class="nav nav-list">');
-			while($key=key($conList)){
-				if($partName==$conList[$key]){
-					printf('<li class="active"><a href="%s">%s</a></li>', "index.php?pageName=" . $pageName . "&partName=" . $conList[$key], $key);
-				}else{
-					printf('<li><a href="%s">%s</a></li>', "index.php?pageName=" . $pageName . "&partName=" . $conList[$key], $key);
-				}
-				next($conList);
-			}
-			printf('</ul> </div> </div>');
-
-			printf('<div class="span9" style="padding-top:20px;">');
-			require($pageName . "/" . $partName);
-			printf('</div>');
-
-			printf('</div>');
-		}else{
-			require($pageName . "/" . $partName);
+		if($_GET["pageName"]!=""){
+			$pageName=$_GET["pageName"];
 		}
 
-		printf('<script type="text/javascript"> $(".pagenav>li").removeClass("active"); $("#%s").addClass("active"); </script>', $pageName);
-      ?>
+		if($pageName=="SINGLE"){
+			require($partName);
+		}
+		
+		else{
+			$conFile=file($pageName . "/content.txt");
+			$conList=array();
+			foreach ($conFile as $line){
+				list($title,$file)=explode("|",$line);
+				$file=trim($file);
+				$conList[$title]=$file;
+			}
+			reset($conList);
+			$partName=current($conList);
+			if(strlen($_GET['partName'])>0){
+				$partName=$_GET['partName'];
+			}
+
+			if (count($conList)>1){
+				printf('<div class="row-fluid">');
+				printf('<div class="span3" style="padding:20px"> <div class="well sidebar-nav"> <ul class="nav nav-list">');
+				while($key=key($conList)){
+					if($partName==$conList[$key]){
+						printf('<li class="active"><a href="%s">%s</a></li>', "index.php?pageName=" . $pageName . "&partName=" . $conList[$key], $key);
+					}else{
+						printf('<li><a href="%s">%s</a></li>', "index.php?pageName=" . $pageName . "&partName=" . $conList[$key], $key);
+					}
+					next($conList);
+				}
+				printf('</ul> </div> </div>');
+
+				printf('<div class="span9" style="padding:20px;">');
+				require($pageName . "/" . $partName);
+				printf('</div>');
+
+				printf('</div>');
+			}else{
+				require($pageName . "/" . $partName);
+			}
+
+			printf('<script type="text/javascript"> $(".pagenav>li").removeClass("active"); $("#%s").addClass("active"); </script>', $pageName);
+		}
+	?>
     </div>
  
     <div class="container-fluid text-center" style="padding:0px;color:#fff;background-color:#000000; position:static; bottom:0px;">

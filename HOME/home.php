@@ -1,4 +1,4 @@
-<div id="myCarousel" class="carousel slide" style="padding-bottom:0px">
+<div id="myCarousel" class="carousel slide" style="padding-bottom:0px; margin:0px; background-color:#000">
 	<!-- 轮播（Carousel）指标 -->
 	<ol class="carousel-indicators">
 		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -18,9 +18,7 @@
 		</div>
 	</div>
 	<!-- 轮播（Carousel）导航 -->
-	<a class="carousel-control left" href="#myCarousel" 
-	   data-slide="prev">&lsaquo;</a>
-	<a class="carousel-control right" href="#myCarousel" 
-	   data-slide="next">&rsaquo;</a>
+	<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+	<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div> 
 

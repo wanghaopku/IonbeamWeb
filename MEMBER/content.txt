@@ -1,4 +1,4 @@
-在读学生/Student.php
-博士后/PostDr.php
-访问学者/Visitor.php
-毕业学生/Graduated.php
+在读学生|Student.php
+博士后|PostDr.php
+访问学者|Visitor.php
+毕业学生|Graduated.php

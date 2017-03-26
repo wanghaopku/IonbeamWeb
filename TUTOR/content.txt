@@ -1,1 +1,2 @@
-导师介绍/tutor.php
+薛建明|xuejianming.php
+|xuejianming.php
