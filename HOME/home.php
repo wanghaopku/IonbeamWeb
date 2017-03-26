@@ -9,16 +9,24 @@
 	<!-- 轮播（Carousel）项目 -->
 	<div class="carousel-inner" style="padding:0px">
 		<div class="item active" style="">
-			<img src="HOME/shengqian.png" alt="">
+			<a href="index.php?pageName=NEWS&partName=shengqian/shengqian.php">
+			<img src="HOME/img/shengqian.png" alt="">
+			</a>
 		</div>
 		<div class="item">
-			<img src="HOME/guoxun.png" alt="">
+			<a href="index.php?pageName=NEWS&partName=guoxun/guoxun.php">
+			<img src="HOME/img/guoxun.png" alt="">
+			</a>
 		</div>
 		<div class="item">
-			<img src="HOME/liweisen.png" alt="">
+			<a href="index.php?pageName=NEWS&partName=liweisen/liweisen.php">
+			<img src="HOME/img/liweisen.png" alt="">
+			</a>
 		</div>
 		<div class="item">
-			<img src="HOME/zxt.png" alt="">
+			<a href="index.php?pageName=NEWS&partName=zxt/zxt.php">
+			<img src="HOME/img/zxt.png" alt="">
+			</a>
 		</div>
 
 	</div>
